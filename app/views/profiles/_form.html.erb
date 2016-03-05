@@ -1,0 +1,23 @@
+<%= simple_form_for(@profile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :profile_pic %>
+    <%= f.input :bio %>
+    <%= f.input :dob %>
+    <%= f.input :street %>
+    <%= f.input :suburb %>
+    <%= f.input :state %>
+    <%= f.input :city %>
+    <%= f.input :country %>
+    <%= f.input :gender %>
+    <%= f.input :phone %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

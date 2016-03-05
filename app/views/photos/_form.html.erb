@@ -1,0 +1,15 @@
+<%= simple_form_for(@photo) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.association :group %>
+    <%= f.input :event_id %>
+    <%= f.input :image %>
+    <%= f.input :caption %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
