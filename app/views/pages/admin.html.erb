@@ -1,0 +1,38 @@
+<h1>Admin</h1>
+
+<h2>Users</h2>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Admin</th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <!-- make this a link to the user's profile page -->
+      <td>
+        <% if user.profile %>
+          <%= link_to user.profile.full_name, profile_path(user.profile) %>
+        <% end %>
+      </td>
+      <td><%= user.email %></td>
+      <td><%= user.profile.phone if user.profile %></td>
+      <!-- bonus points for a button that makes the user an admin -->
+      <td>
+        <% unless user.has_role? :admin %>
+          <%= link_to 'Make admin', 'make_admin/' + user.id.to_s, class: 'btn btn-info'  %>
+        <% end %>
+      </td>
+      <!-- delete user -->
+      <td>
+        <% if user == current_user %>
+          <%= link_to 'Edit', edit_user_registration_path(user) %>
+        <% else %>
+          <%= link_to 'Delete user', user_path(user), method: :delete, data: { confirm: 'Are you sure?'} %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

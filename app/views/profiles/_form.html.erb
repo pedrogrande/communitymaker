@@ -2,18 +2,27 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :user %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :profile_pic %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :first_name, placeholder: 'First name' %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :last_name %>
+      </div>
+    </div>
+    Profile Pic<br>
+    <label class="file">
+      <%= f.file_field :profile_pic %>
+      <span class="file-custom"></span>
+    </label>
     <%= f.input :bio %>
-    <%= f.input :dob %>
+    <%= f.input :dob, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, label: 'Date of birth' %>
     <%= f.input :street %>
     <%= f.input :suburb %>
     <%= f.input :state %>
     <%= f.input :city %>
-    <%= f.input :country %>
-    <%= f.input :gender %>
+    <%= f.input :country, priority: ['Australia'] %>
+    <%= f.input :gender, as: :radio_buttons, collection: ['Male', 'Female', 'Rather not say'] %>
     <%= f.input :phone %>
   </div>
 

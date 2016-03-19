@@ -1,69 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @profile.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @profile.last_name %>
-</p>
-
-<p>
-  <strong>Profile pic:</strong>
-  <%= @profile.profile_pic %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @profile.bio %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @profile.dob %>
-</p>
-
-<p>
-  <strong>Street:</strong>
-  <%= @profile.street %>
-</p>
-
-<p>
-  <strong>Suburb:</strong>
-  <%= @profile.suburb %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @profile.state %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @profile.city %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @profile.country %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @profile.gender %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @profile.phone %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <img class="card-img-top" src="<%= @profile.profile_pic %>" alt="Card image cap" width="100%" height="auto">
+      <div class="card-block">
+        <h4 class="card-title"><%= @profile.full_name %></h4>
+        <p class="card-text"><%= @profile.bio %></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Phone: <%= @profile.phone %></li>
+        <li class="list-group-item">Date of birth: <%= @profile.dob.strftime('%d %b %y') %></li>
+        <li class="list-group-item">Email: <%= @profile.user.email %></li>
+        <li class="list-group-item"><%= ISO3166::Country[@profile.country] %></li>
+      </ul>
+      <div class="card-block">
+        <% if @profile.user == current_user %>
+          <%= link_to 'Edit profile', edit_profile_path(@profile) , class: 'btn btn-primary btn-sm'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

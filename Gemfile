@@ -7,6 +7,13 @@ gem 'devise'
 gem 'simple_form'
 gem 'country_select'
 gem 'bootstrap'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'rolify'
+gem 'cancancan'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

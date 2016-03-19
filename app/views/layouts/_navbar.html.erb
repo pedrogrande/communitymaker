@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light bg-faded">
+  <div class="container">
+  <a class="navbar-brand" href="/">Community Maker</a>
+  <ul class="nav navbar-nav pull-md-right">
+    <li class="nav-item <%= 'active' if current_page?(root_path) %>">
+      <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item <%= 'active' if current_page?(about_path) %>">
+      <a class="nav-link" href="/about">About</a>
+    </li>
+    <li class="nav-item <%= 'active' if current_page?(contact_path) %>">
+      <a class="nav-link" href="/contact">Contact</a>
+    </li>
+    <% if user_signed_in? %>
+      <% if current_user.profile %>
+        <li class="nav-item">
+          <%= link_to 'My profile', profile_path(current_user.profile), class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Create your profile', new_profile_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+      <% if current_user.has_role? :admin %>
+        <li class="nav-item <%= 'active' if current_page?(admin_path) %>">
+          <%= link_to 'Admin', admin_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+      </li>
+    <% end %>
+
+  </ul>
+  <!-- <form class="form-inline pull-xs-right">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-success-outline" type="submit">Search</button>
+  </form> -->
+</div>
+</nav>

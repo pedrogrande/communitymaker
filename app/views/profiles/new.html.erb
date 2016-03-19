@@ -1,5 +1,7 @@
-<h1>New Profile</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', profiles_path %>
+<div class="card card-block">
+  <h4 class="card-title">Create your profile</h4>
+  <p class="card-text">
+    <%= render 'form' %>
+  </p>
+  <%= link_to 'Back', profiles_path, class: 'card-link' %>
+</div>
