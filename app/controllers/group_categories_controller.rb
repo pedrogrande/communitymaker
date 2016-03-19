@@ -28,7 +28,7 @@ class GroupCategoriesController < ApplicationController
 
     respond_to do |format|
       if @group_category.save
-        format.html { redirect_to @group_category, notice: 'Group category was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Group category was successfully created.' }
         format.json { render :show, status: :created, location: @group_category }
       else
         format.html { render :new }
