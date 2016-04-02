@@ -8,6 +8,11 @@
 </head>
 <body>
 <%= render 'layouts/navbar' %>
+<% if content_for? :group_name %>
+  <section class="group-banner" style="background-image: url(<%= yield(:group_banner) %>); height: 200px;">
+    <h1><%= yield(:group_name) %></h1>
+  </section>
+<% end %>
 <div class="container">
 <%= yield %>
 </div>

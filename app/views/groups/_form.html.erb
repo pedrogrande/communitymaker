@@ -5,8 +5,16 @@
     <%= f.association :group_category %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :logo %>
-    <%= f.input :banner %>
+    Logo
+    <label class="file">
+      <%= f.file_field :logo %>
+      <span class="file-custom"></span>
+    </label>
+    Banner
+    <label class="file">
+      <%= f.file_field :banner %>
+      <span class="file-custom"></span>
+    </label>
   </div>
 
   <div class="form-actions">
