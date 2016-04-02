@@ -21,7 +21,7 @@
         <td><%= group.group_category %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
-        <td><%= group.logo %></td>
+        <td><%= cl_image_tag group.logo, width: '50px' %></td>
         <td><%= group.banner %></td>
         <td><%= group.owner_id %></td>
         <td><%= link_to 'Show', group %></td>
