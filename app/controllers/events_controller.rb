@@ -4,7 +4,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    if params[:tag]
+      @events = Event.tagged_with(params[:tag])
+    else
+      @events = Event.all
+    end
+    @tags = ActsAsTaggableOn::Tag.most_used
   end
 
   # GET /events/1
@@ -25,7 +30,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    @event.user = current_user
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -69,6 +74,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:user_id, :name, :description, :date, :start_time, :end_time, :street, :suburb, :state, :postcode, :country)
+      params.require(:event).permit(:tag_list, :name, :description, :date, :start_time, :end_time, :street, :suburb, :state, :postcode, :country, :group_ids => [])
     end
 end

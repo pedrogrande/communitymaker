@@ -2,9 +2,9 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :user %>
     <%= f.input :name %>
     <%= f.input :description %>
+    <%= f.association :groups, as: :check_boxes %>
     <%= f.input :date %>
     <%= f.input :start_time %>
     <%= f.input :end_time %>
@@ -13,6 +13,7 @@
     <%= f.input :state %>
     <%= f.input :postcode %>
     <%= f.input :country %>
+    <%= f.input :tag_list, input_html: { value: @event.tag_list.to_s } %>
   </div>
 
   <div class="form-actions">

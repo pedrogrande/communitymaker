@@ -15,6 +15,8 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'rolify'
 gem 'cancancan'
+gem 'geocoder'
+gem 'acts-as-taggable-on'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

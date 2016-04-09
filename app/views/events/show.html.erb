@@ -17,17 +17,17 @@
 
 <p>
   <strong>Date:</strong>
-  <%= @event.date %>
+  <%= @event.date.strftime('%d %b %y') %>
 </p>
 
 <p>
   <strong>Start time:</strong>
-  <%= @event.start_time %>
+  <%= @event.start_time.strftime('%H:%M%P') %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.end_time %>
+  <%= @event.end_time.strftime('%H:%M%P')  %>
 </p>
 
 <p>
@@ -54,6 +54,23 @@
   <strong>Country:</strong>
   <%= @event.country %>
 </p>
+
+<p><strong>Tags</strong></p>
+<% @event.tags.each do |tag| %>
+  <%= link_to tag, events_path(tag: tag.name) %>
+<% end %>
+
+<h3>Groups</h3>
+<% @event.groups.each do |group| %>
+  <%= link_to group.name, group, class: 'btn btn-warning' %>
+<% end %>
+
+<img src="https://maps.googleapis.com/maps/api/staticmap
+?zoom=14
+&size=600x300
+&maptype=roadmap
+&markers=color:blue%7C<%= @event.latitude %>,<%= @event.longitude %>
+&key=" alt="">
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
