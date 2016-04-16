@@ -1,14 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @event.user %>
-</p>
+
+<h1>
+  <%= @event.name %>
+</h1>
 
 <p>
-  <strong>Name:</strong>
-  <%= @event.name %>
+<% if current_user.voted_for? @event %>
+  <%= link_to 'Unlike', unlike_event_path(@event), class: 'btn btn-warning' %>
+<% else %>
+  <%= link_to 'Like', like_event_path(@event), class: 'btn btn-success' %>
+<% end %>
 </p>
+<p>Likes: <%= @event.votes_for.size %> </p>
+<% @stars.each do |star| %>
+  <%= link_to rate_event_path(@event, stars: star) do %>
+    <i class="fa fa-star-o"></i>
+  <% end %>
+<% end %>
+
+<p>Average rating: <%= @event.weighted_score.round(1) / @event.votes_for.size %> / <%= @event.votes_for.size %>
 
 <p>
   <strong>Description:</strong>

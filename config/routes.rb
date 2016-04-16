@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   resources :photos
   resources :posts
-  resources :events
+  resources :events do
+    member do
+      get :like, :unlike, :rate
+    end
+  end
   resources :groups
   resources :group_categories
   resources :profiles

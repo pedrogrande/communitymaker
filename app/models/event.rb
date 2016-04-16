@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   validates :street, :suburb, :postcode, :state, presence: true
 
   acts_as_taggable
+  acts_as_votable
 
   geocoded_by :full_street_address
   after_validation :geocode

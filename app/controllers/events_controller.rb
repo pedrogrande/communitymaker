@@ -1,5 +1,20 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:rate, :unlike, :like, :show, :edit, :update, :destroy]
+
+  def rate
+    @event.vote_by :voter => current_user, :vote_weight => params[:stars], :scope => 'rating'
+    redirect_to :back
+  end
+
+  def like
+    @event.liked_by current_user
+    redirect_to :back
+  end
+
+  def unlike
+    @event.unliked_by current_user
+    redirect_to :back
+  end
 
   # GET /events
   # GET /events.json
@@ -15,6 +30,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @stars = 1..5
   end
 
   # GET /events/new

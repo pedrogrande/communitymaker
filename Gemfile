@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
+gem 'acts_as_votable'
 gem 'devise'
 gem 'simple_form'
 gem 'country_select'
