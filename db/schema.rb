@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416002123) do
+ActiveRecord::Schema.define(version: 20160423041641) do
 
   create_table "enquiries", force: :cascade do |t|
     t.string   "name"
@@ -83,6 +83,16 @@ ActiveRecord::Schema.define(version: 20160416002123) do
 
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id"
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "subject"
+    t.text     "body"
+    t.boolean  "read",        default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.integer  "user_id"
@@ -175,6 +185,8 @@ ActiveRecord::Schema.define(version: 20160416002123) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -4,7 +4,7 @@
     <div class="card">
       <img class="card-img-top" src="<%= @profile.profile_pic %>" alt="Card image cap" width="100%" height="auto">
       <div class="card-block">
-        <h4 class="card-title"><%= @profile.full_name %></h4>
+        <h4 class="card-title"><%= @profile.full_name %> <%= link_to 'Message', new_message_path(receiver: @profile.user), class: 'btn btn-warning btn-sm' %></h4>
         <p class="card-text"><%= @profile.bio %></p>
       </div>
       <ul class="list-group list-group-flush">

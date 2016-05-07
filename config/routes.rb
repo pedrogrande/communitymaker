@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :enquiries
   get 'admin', to: 'pages#admin'
   get 'contact', to: 'pages#contact'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :group_categories
   resources :profiles
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   get 'home/index'
   resources :users, only: :destroy
   get 'make_admin/:id', to: 'users#make_admin'

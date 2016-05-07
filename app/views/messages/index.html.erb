@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Inbox</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sender</th>
+      <th>Subject</th>
+      <th>
+        Received
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr class="<%= 'unread' unless message.read %>">
+        <td><%= User.find(message.sender_id).profile.full_name %></td>
+        <td><%= link_to message.subject, message %></td>
+        <td>
+          <%= message.created_at.strftime('%H:%M %d %b %Y') %>
+        </td>
+        <td><%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

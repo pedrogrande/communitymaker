@@ -1,0 +1,13 @@
+<%= simple_form_for(@message) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :receiver_id, as: :hidden, input_html: { value: params[:receiver]} %>
+    <%= f.input :subject %>
+    <%= f.input :body %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Send message", class: 'btn btn-info' %>
+  </div>
+<% end %>
